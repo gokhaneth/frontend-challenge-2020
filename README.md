@@ -232,4 +232,10 @@ We'll give bonus points if you implement a wrapper component that parses and wri
 
 ## Questions?
 
-If you have any questions don't hesitate to contact us.
+If you have any questions don't hesitate to contact me at [ps@polarmedia.co](mailto:ps@polarmedia.co).
+
+## Deliverables
+
+You should deliver a Vue.js single file component, or two if you complete the [bonus objective](#bonus-objective).
+
+Please try to document your code as much as possible. 
