@@ -28,26 +28,26 @@ The filter component should support the basic types (numbers, strings, booleans)
 
 The filter component should support different types of comparisons for each type (see above).
 - **Numbers**
-  - greater than
-  - less than
-  - is
-  - is not
-  - is unknown — _field is null_
-  - has any value  — _field is **NOT** null_
+  - greater than (`gt`)
+  - less than (`lt`)
+  - is (`is`)
+  - is not (`is_not`)
+  - is unknown (`unknown`) — _field is null_
+  - has any value (`any`)  — _field is **NOT** null_
 
 - **Strings**
-  - is
-  - is not
-  - starts with
-  - ends with
-  - contains
-  - does not contain
-  - is unknown — _field is null_
-  - has any value  — _field is **NOT** null_
+  - is (`is`)
+  - is not (`is_not`)
+  - starts with (`starts_with`)
+  - ends with (`ends_with`)
+  - contains (`contains`)
+  - does not contain (`not_contain`)
+  - is unknown (`unknown`) — _field is null_
+  - has any value (`any`)  — _field is **NOT** null_
 
 - **Booleans**
-  - true
-  - false
+  - true (`true`)
+  - false (`false`)
 
 ## Filterable fields
 
@@ -124,3 +124,43 @@ The filter component should support different types of comparisons for each type
   </p>
 
 </details>
+
+### Posts
+
+## Building the filter request
+
+The filter request data should look the same for all endpoints.
+
+```http request
+POST /api/v3/instagram/accounts/5.min.crafts/posts/searches HTTP/1.1
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json;charset=UTF-8
+Host: igblade.com
+Connection: close
+Content-Length: 159
+
+{
+   "filters":[
+      ...
+      {
+         "key":"posted_at",
+         "type":"date",
+         "comparison":"gt_relative",
+         "value":"5",
+      }
+      ...
+   ],
+   "page":1,
+   "sort_by":"posted_at",
+   "sort_desc":true
+}
+```
+
+The filters should be provided as an array of objects with the above structure.
+The required fields are:
+- `key` the key of the field that is filtered [see keys](#Comparisons)
+- `type` the field type that is filtered
+- `comparison`
+- `value`
+
+### Query params
