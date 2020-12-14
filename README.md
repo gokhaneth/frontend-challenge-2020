@@ -86,8 +86,6 @@ We omitted a few custom fields for simplicity, but the point of this component i
 <details>
   <summary>View all fields</summary>
 
-  <p>
-
     [
      {
         "key":"follower_count",
@@ -136,17 +134,13 @@ We omitted a few custom fields for simplicity, but the point of this component i
      }
     ]
 
-  </p>
-
 </details>
 
 ### Posts
 
 <details>
     <summary>View all fields</summary>
-    
-    <p>
-    
+
     [
        {
           "key":"like_count",
@@ -179,8 +173,6 @@ We omitted a few custom fields for simplicity, but the point of this component i
           "type":"time"
        }
     ]
-    
-    </p>
 </details>
 
 ## Building the filter request
@@ -214,6 +206,8 @@ Content-Length: 159
 
 The filters should be provided as an array of filter objects.
 
+`sort_by` and `sort_desc` can be safely omitted.
+
 The required fields for each filter are:
 - `key` the key of the field that is filtered [see keys](#filterable-fields)
 - `type` the field type that is filtered [see types](#types)
@@ -227,6 +221,14 @@ The root of the filter component should have a `value` prop that accepts an arra
 The component should have another prop used to pass in the fields that can be filtered.
 
 It should be simple to implement other types of comparisons and custom fields as seen on IGBlade.com, but for this challenge the [listed fields](#filterable-fields) are enough.
+
+## Design
+
+Here are a few screenshots to illustrate how the component should look like and work.
+
+![Field picker](https://i.imgur.com/SewNNCJ.png)
+![Numeric field](https://i.imgur.com/hENcEUo.png)
+![String field](https://i.imgur.com/uRLw91n.png)
 
 ## Bonus points
 
