@@ -232,7 +232,7 @@ We'll give bonus points if you implement a wrapper component that parses and wri
 
 ## Questions?
 
-If you have any questions don't hesitate to contact me at [ps@polarmedia.co](mailto:ps@polarmedia.co).
+If you have any questions don't hesitate to contact me at [ps@igblade.com](mailto:ps@igblade.com).
 
 ## Deliverables
 
