@@ -15,6 +15,45 @@ Create a modular filter component that can be used everywhere regardless of the 
 - Social account posts: `POST https://igblade.com/api/v3/{platform}/accounts/{username}/posts/searches`
   - `platform` is one of `instagram` or `tiktok` - please only use `instagram` for this challenge.
   - `username` is the social profile's unique username eg. `cristiano`
+  
+## Building the filter request
+
+The filter request data should look the same for all endpoints.
+
+```http request
+POST /api/v3/instagram/accounts/5.min.crafts/posts/searches HTTP/1.1
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json;charset=UTF-8
+Host: igblade.com
+Connection: close
+Content-Length: 159
+
+{
+   "filters":[
+      ...
+      {
+         "key":"posted_at",
+         "type":"date",
+         "comparison":"gt_relative",
+         "value":"5",
+      }
+      ...
+   ],
+   "page":1,
+   "sort_by":"posted_at",
+   "sort_desc":true
+}
+```
+
+The filters should be provided as an array of filter objects.
+
+`sort_by` and `sort_desc` can be safely omitted.
+
+The required fields for each filter are:
+- `key` the key of the field that is filtered [see keys](#filterable-fields)
+- `type` the field type that is filtered [see types](#types)
+- `comparison` the comparison method [see comparisons](#comparisons)
+- `value` the user supplied value used for filtering (not required in some cases)
 
 ## Types
 
@@ -171,45 +210,6 @@ We omitted a few custom fields for simplicity, but the point of this component i
     ]
 </details>
 
-## Building the filter request
-
-The filter request data should look the same for all endpoints.
-
-```http request
-POST /api/v3/instagram/accounts/5.min.crafts/posts/searches HTTP/1.1
-Authorization: Bearer YOUR_API_TOKEN
-Content-Type: application/json;charset=UTF-8
-Host: igblade.com
-Connection: close
-Content-Length: 159
-
-{
-   "filters":[
-      ...
-      {
-         "key":"posted_at",
-         "type":"date",
-         "comparison":"gt_relative",
-         "value":"5",
-      }
-      ...
-   ],
-   "page":1,
-   "sort_by":"posted_at",
-   "sort_desc":true
-}
-```
-
-The filters should be provided as an array of filter objects.
-
-`sort_by` and `sort_desc` can be safely omitted.
-
-The required fields for each filter are:
-- `key` the key of the field that is filtered [see keys](#filterable-fields)
-- `type` the field type that is filtered [see types](#types)
-- `comparison` the comparison method [see comparisons](#comparisons)
-- `value` the user supplied value used for filtering (not required in some cases)
-
 ## Component interface
 
 The root of the filter component should have a `value` prop that accepts an array of filters and updates it with `$emit('input', filters)` to be used with `v-model`.
@@ -226,7 +226,7 @@ Here are a few screenshots to illustrate how the component should look like and 
 ![Numeric field](https://i.imgur.com/hENcEUo.png)
 ![String field](https://i.imgur.com/uRLw91n.png)
 
-## Bonus points
+## Bonus objective
 
 We'll give bonus points if you implement a wrapper component that parses and writes the filters in the query string. Hint: we are using a base64 encoded solution for this.
 
