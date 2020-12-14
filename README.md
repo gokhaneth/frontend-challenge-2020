@@ -142,6 +142,47 @@ We omitted a few custom fields for simplicity, but the point of this component i
 
 ### Posts
 
+<details>
+    <summary>View all fields</summary>
+    
+    <p>
+    
+    [
+       {
+          "key":"like_count",
+          "label":"Likes",
+          "type":"number"
+       },
+       {
+          "key":"comment_count",
+          "label":"Comments",
+          "type":"number"
+       },
+       {
+          "key":"view_count",
+          "label":"Video views",
+          "type":"number"
+       },
+       {
+          "key":"caption",
+          "label":"Caption",
+          "type":"string"
+       },
+       {
+          "key":"posted_at",
+          "label":"Posted",
+          "type":"date"
+       },
+       {
+          "key":"posted_at",
+          "label":"Time of day",
+          "type":"time"
+       }
+    ]
+    
+    </p>
+</details>
+
 ## Building the filter request
 
 The filter request data should look the same for all endpoints.
